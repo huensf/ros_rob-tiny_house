@@ -8,7 +8,7 @@
  *
  * Universite catholique de Louvain, Belgium 
  *
- * Last update : Sat Jan  9 22:36:47 2021
+ * Last update : Wed May 12 14:44:06 2021
  * --------------------------------------------------------
  *
  */
@@ -16,6 +16,7 @@
 #define USERMODEL_h
 
 
+#include "thread_struct.h"
 
 #include "mbs_user_interface.h"
 // ============================================================ //
@@ -75,6 +76,34 @@ struct UserModel
         double R;
         double K;
     } RearTire_rem;
+ 
+    struct steerwheel{
+        double D;
+    } steerwheel;
+ 
+    struct pedals{
+        double ped1;
+        double ped2;
+        double mode;
+    } pedals;
+ 
+    struct PID{
+        double Kp;
+        double Kd;
+        double Ki;
+        double velocity;
+        double brake;
+        double sum_error;
+        double previous_error;
+    } PID;
+ 
+    struct thread{
+        ThreadStruct* thread_struct;        // pointer must be initialized and freed by the user
+    } thread;
+ 
+    struct expe{
+        double t_rand;
+    } expe;
  
 };
 

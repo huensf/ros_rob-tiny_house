@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <mbsDescR7>
   <mbsname>Car</mbsname>
-  <mbsyspad_version>1.14.3</mbsyspad_version>
+  <mbsyspad_version>1.13.0</mbsyspad_version>
   <base>
     <!--this is the base body-->
     <gravity>
@@ -77,7 +77,7 @@
             <specularColor R="255" G="255" B="255" />
             <shininess>250.0</shininess>
             <transparency>0.5</transparency>
-            <url>PRJPATH\animationR\vrml\piste.wrl</url>
+            <url>PRJPATH/animationR/vrml/piste.wrl</url>
           </inline>
           <box>
             <name>route</name>
@@ -607,6 +607,23 @@
           <x3D />
         </graphics>
       </point>
+      <point>
+        <pointname>Volant</pointname>
+        <coordinates>
+          <x>-1.0</x>
+          <y>0.23</y>
+          <z>0.55</z>
+        </coordinates>
+        <graphics>
+          <x2D>
+            <position>
+              <x>692.0</x>
+              <y>350.0</y>
+            </position>
+          </x2D>
+          <x3D />
+        </graphics>
+      </point>
       <graphics>
         <x2D>
           <position>
@@ -668,7 +685,7 @@
               <specularColor R="255" G="255" B="255" />
               <shininess>250.0</shininess>
               <transparency>0.0</transparency>
-              <url>PRJPATH\animationR\vrml\bmw_m6_trans.wrl</url>
+              <url>PRJPATH/animationR/vrml/bmw_m6_trans.wrl</url>
             </inline>
           </x3D_shapes>
         </x3D>
@@ -1308,7 +1325,7 @@
               <specularColor R="255" G="255" B="255" />
               <shininess>250.0</shininess>
               <transparency>0.0</transparency>
-              <url>PRJPATH\animationR\vrml\JANTES_plein.wrl</url>
+              <url>PRJPATH/animationR/vrml/JANTES_plein.wrl</url>
             </inline>
           </x3D_shapes>
         </x3D>
@@ -1850,7 +1867,7 @@
               <specularColor R="255" G="255" B="255" />
               <shininess>250.0</shininess>
               <transparency>0.0</transparency>
-              <url>PRJPATH\animationR\vrml\JANTES_plein.wrl</url>
+              <url>PRJPATH/animationR/vrml/JANTES_plein.wrl</url>
             </inline>
           </x3D_shapes>
         </x3D>
@@ -3041,6 +3058,23 @@
           <x3D />
         </graphics>
       </point>
+      <point>
+        <pointname>Point_2</pointname>
+        <coordinates>
+          <x>0.0</x>
+          <y>0.23</y>
+          <z>0.0</z>
+        </coordinates>
+        <graphics>
+          <x2D>
+            <position>
+              <x>797.0</x>
+              <y>430.0</y>
+            </position>
+          </x2D>
+          <x3D />
+        </graphics>
+      </point>
       <graphics>
         <x2D>
           <position>
@@ -3360,6 +3394,82 @@
       </graphics>
     </body>
     <body>
+      <bodyname>Pinion</bodyname>
+      <parent>
+        <bodyname>Bar_direction_1</bodyname>
+        <pointname>Point_2</pointname>
+      </parent>
+      <joint>
+        <jointname>T2_rackp</jointname>
+        <type>T2</type>
+        <nature>dependent</nature>
+        <graphics>
+          <x2D>
+            <position>
+              <x>809.0</x>
+              <y>400.0</y>
+            </position>
+          </x2D>
+          <x3D>
+            <x3D_joint />
+            <x3D_frame />
+          </x3D>
+        </graphics>
+      </joint>
+      <joint>
+        <jointname>R3_pinion</jointname>
+        <type>R3</type>
+        <nature>dependent</nature>
+        <graphics>
+          <x2D>
+            <position>
+              <x>864.0</x>
+              <y>398.0</y>
+            </position>
+          </x2D>
+          <x3D>
+            <x3D_joint />
+            <x3D_frame />
+          </x3D>
+        </graphics>
+      </joint>
+      <mass>0.5</mass>
+      <inertia>
+        <Ixx>1.0E-4</Ixx>
+        <Iyy>1.0E-4</Iyy>
+        <Izz>1.0E-4</Izz>
+      </inertia>
+      <graphics>
+        <x2D>
+          <position>
+            <x>12.0</x>
+            <y>-4.0</y>
+          </position>
+          <name_pos>
+            <x>0.0</x>
+            <y>0.0</y>
+          </name_pos>
+          <shape>circle</shape>
+          <size>
+            <x>21.0</x>
+            <y>21.0</y>
+          </size>
+          <control_points>
+            <control_point>
+              <x>33.0</x>
+              <y>-4.0</y>
+            </control_point>
+          </control_points>
+          <angle>0.0</angle>
+        </x2D>
+        <x3D>
+          <x3D_com />
+          <x3D_points />
+          <x3D_lines />
+        </x3D>
+      </graphics>
+    </body>
+    <body>
       <bodyname>Bras_sup_ar_g_1</bodyname>
       <parent>
         <bodyname>Chassis_1</bodyname>
@@ -3645,7 +3755,7 @@
               <specularColor R="255" G="255" B="255" />
               <shininess>250.0</shininess>
               <transparency>0.0</transparency>
-              <url>PRJPATH\animationR\vrml\JANTES_plein.wrl</url>
+              <url>PRJPATH/animationR/vrml/JANTES_plein.wrl</url>
             </inline>
           </x3D_shapes>
         </x3D>
@@ -3937,7 +4047,7 @@
               <specularColor R="255" G="255" B="255" />
               <shininess>250.0</shininess>
               <transparency>0.0</transparency>
-              <url>PRJPATH\animationR\vrml\JANTES_plein.wrl</url>
+              <url>PRJPATH/animationR/vrml/JANTES_plein.wrl</url>
             </inline>
           </x3D_shapes>
         </x3D>
@@ -4987,7 +5097,7 @@
               <specularColor R="255" G="255" B="255" />
               <shininess>250.0</shininess>
               <transparency>0.5</transparency>
-              <url>PRJPATH\animationR\vrml\JANTES_plein.wrl</url>
+              <url>PRJPATH/animationR/vrml/JANTES_plein.wrl</url>
             </inline>
           </x3D_shapes>
         </x3D>
@@ -5080,7 +5190,7 @@
               <specularColor R="255" G="255" B="255" />
               <shininess>250.0</shininess>
               <transparency>0.0</transparency>
-              <url>PRJPATH\animationR\vrml\JANTES_plein.wrl</url>
+              <url>PRJPATH/animationR/vrml/JANTES_plein.wrl</url>
             </inline>
           </x3D_shapes>
         </x3D>
@@ -5173,7 +5283,7 @@
               <specularColor R="255" G="255" B="255" />
               <shininess>250.0</shininess>
               <transparency>0.5</transparency>
-              <url>PRJPATH\animationR\vrml\JANTES_plein.wrl</url>
+              <url>PRJPATH/animationR/vrml/JANTES_plein.wrl</url>
             </inline>
           </x3D_shapes>
         </x3D>
@@ -5266,7 +5376,7 @@
               <specularColor R="255" G="255" B="255" />
               <shininess>250.0</shininess>
               <transparency>0.5</transparency>
-              <url>PRJPATH\animationR\vrml\JANTES_plein.wrl</url>
+              <url>PRJPATH/animationR/vrml/JANTES_plein.wrl</url>
             </inline>
           </x3D_shapes>
         </x3D>
@@ -5431,6 +5541,116 @@
               </size>
             </box>
           </x3D_shapes>
+        </x3D>
+      </graphics>
+    </body>
+    <body>
+      <bodyname>Volant</bodyname>
+      <parent>
+        <bodyname>Chassis_1</bodyname>
+        <pointname>Volant</pointname>
+      </parent>
+      <joint>
+        <jointname>Redressement</jointname>
+        <type>R1</type>
+        <nature>dependent</nature>
+        <graphics>
+          <x2D>
+            <position>
+              <x>734.0</x>
+              <y>342.0</y>
+            </position>
+          </x2D>
+          <x3D>
+            <x3D_joint />
+            <x3D_frame />
+          </x3D>
+        </graphics>
+      </joint>
+      <joint>
+        <jointname>Inter_out</jointname>
+        <type>R1</type>
+        <nature>dependent</nature>
+        <graphics>
+          <x2D>
+            <position>
+              <x>789.0</x>
+              <y>356.0</y>
+            </position>
+          </x2D>
+          <x3D>
+            <x3D_joint />
+            <x3D_frame />
+          </x3D>
+        </graphics>
+      </joint>
+      <joint>
+        <jointname>Inter_in</jointname>
+        <type>R1</type>
+        <nature>dependent</nature>
+        <graphics>
+          <x2D>
+            <position>
+              <x>829.0</x>
+              <y>345.0</y>
+            </position>
+          </x2D>
+          <x3D>
+            <x3D_joint />
+            <x3D_frame />
+          </x3D>
+        </graphics>
+      </joint>
+      <joint>
+        <jointname>R1_steerwheel</jointname>
+        <type>R1</type>
+        <nature>independent</nature>
+        <graphics>
+          <x2D>
+            <position>
+              <x>937.0</x>
+              <y>349.0</y>
+            </position>
+          </x2D>
+          <x3D>
+            <x3D_joint />
+            <x3D_frame />
+          </x3D>
+        </graphics>
+      </joint>
+      <mass>1.5</mass>
+      <inertia>
+        <Ixx>0.014</Ixx>
+        <Iyy>0.014</Iyy>
+        <Izz>0.027</Izz>
+      </inertia>
+      <graphics>
+        <x2D>
+          <position>
+            <x>-1.0</x>
+            <y>-5.0</y>
+          </position>
+          <name_pos>
+            <x>0.0</x>
+            <y>0.0</y>
+          </name_pos>
+          <shape>circle</shape>
+          <size>
+            <x>27.0</x>
+            <y>27.0</y>
+          </size>
+          <control_points>
+            <control_point>
+              <x>26.0</x>
+              <y>-5.0</y>
+            </control_point>
+          </control_points>
+          <angle>0.0</angle>
+        </x2D>
+        <x3D>
+          <x3D_com />
+          <x3D_points />
+          <x3D_lines />
         </x3D>
       </graphics>
     </body>
@@ -5796,6 +6016,87 @@
         <name>K</name>
         <type>scalar</type>
         <value>200000.0</value>
+      </parameter>
+    </user_model>
+    <user_model>
+      <name>steerwheel</name>
+      <parameter>
+        <name>D</name>
+        <type>scalar</type>
+        <value>0.0</value>
+      </parameter>
+    </user_model>
+    <user_model>
+      <name>pedals</name>
+      <parameter>
+        <name>ped1</name>
+        <type>scalar</type>
+        <value>0.0</value>
+      </parameter>
+      <parameter>
+        <name>ped2</name>
+        <type>scalar</type>
+        <value>0.0</value>
+      </parameter>
+      <parameter>
+        <name>mode</name>
+        <type>scalar</type>
+        <value>0.0</value>
+      </parameter>
+    </user_model>
+    <user_model>
+      <name>PID</name>
+      <parameter>
+        <name>Kp</name>
+        <type>scalar</type>
+        <value>0.0</value>
+      </parameter>
+      <parameter>
+        <name>Kd</name>
+        <type>scalar</type>
+        <value>0.0</value>
+      </parameter>
+      <parameter>
+        <name>Ki</name>
+        <type>scalar</type>
+        <value>0.0</value>
+      </parameter>
+      <parameter>
+        <name>velocity</name>
+        <type>scalar</type>
+        <value>0.0</value>
+      </parameter>
+      <parameter>
+        <name>brake</name>
+        <type>scalar</type>
+        <value>0.0</value>
+      </parameter>
+      <parameter>
+        <name>sum_error</name>
+        <type>scalar</type>
+        <value>0.0</value>
+      </parameter>
+      <parameter>
+        <name>previous_error</name>
+        <type>scalar</type>
+        <value>0.0</value>
+      </parameter>
+    </user_model>
+    <user_model>
+      <name>thread</name>
+      <parameter>
+        <name>thread_struct</name>
+        <type>structure</type>
+        <structure>ThreadStruct</structure>
+        <header>thread_struct.h</header>
+      </parameter>
+    </user_model>
+    <user_model>
+      <name>expe</name>
+      <parameter>
+        <name>t_rand</name>
+        <type>scalar</type>
+        <value>0.0</value>
       </parameter>
     </user_model>
   </user_models>

@@ -8,7 +8,7 @@
  *
  * Universite catholique de Louvain, Belgium 
  *
- * Last update : Sat Jan  9 22:36:47 2021
+ * Last update : Wed May 12 14:44:06 2021
  * --------------------------------------------------------
  *
  */
@@ -61,6 +61,23 @@ UserModel* mbs_new_user_model()
     um->RearTire_rem.R = 0.0;
     um->RearTire_rem.K = 0.0;
  
+    um->steerwheel.D = 0.0;
+ 
+    um->pedals.ped1 = 0.0;
+    um->pedals.ped2 = 0.0;
+    um->pedals.mode = 0.0;
+ 
+    um->PID.Kp = 0.0;
+    um->PID.Kd = 0.0;
+    um->PID.Ki = 0.0;
+    um->PID.velocity = 0.0;
+    um->PID.brake = 0.0;
+    um->PID.sum_error = 0.0;
+    um->PID.previous_error = 0.0;
+ 
+ 
+    um->expe.t_rand = 0.0;
+ 
     return um;
 }
 
@@ -108,6 +125,23 @@ void mbs_delete_user_model(UserModel* um)
     um->RearTire_rem.R = mbs_infos->user_models->user_model_list[8]->parameter_list[0]->value_list[1];
     um->RearTire_rem.K = mbs_infos->user_models->user_model_list[8]->parameter_list[1]->value_list[1];
  
+    um->steerwheel.D = mbs_infos->user_models->user_model_list[9]->parameter_list[0]->value_list[1];
+ 
+    um->pedals.ped1 = mbs_infos->user_models->user_model_list[10]->parameter_list[0]->value_list[1];
+    um->pedals.ped2 = mbs_infos->user_models->user_model_list[10]->parameter_list[1]->value_list[1];
+    um->pedals.mode = mbs_infos->user_models->user_model_list[10]->parameter_list[2]->value_list[1];
+ 
+    um->PID.Kp = mbs_infos->user_models->user_model_list[11]->parameter_list[0]->value_list[1];
+    um->PID.Kd = mbs_infos->user_models->user_model_list[11]->parameter_list[1]->value_list[1];
+    um->PID.Ki = mbs_infos->user_models->user_model_list[11]->parameter_list[2]->value_list[1];
+    um->PID.velocity = mbs_infos->user_models->user_model_list[11]->parameter_list[3]->value_list[1];
+    um->PID.brake = mbs_infos->user_models->user_model_list[11]->parameter_list[4]->value_list[1];
+    um->PID.sum_error = mbs_infos->user_models->user_model_list[11]->parameter_list[5]->value_list[1];
+    um->PID.previous_error = mbs_infos->user_models->user_model_list[11]->parameter_list[6]->value_list[1];
+ 
+ 
+    um->expe.t_rand = mbs_infos->user_models->user_model_list[13]->parameter_list[0]->value_list[1];
+ 
 }
 
  void mbs_bind_user_model(MbsInfos* mbs_infos, UserModel* um) 
@@ -146,6 +180,24 @@ void mbs_delete_user_model(UserModel* um)
  
     mbs_infos->user_models->user_model_list[8]->parameter_list[0]->val_ptr = &um->RearTire_rem.R;
     mbs_infos->user_models->user_model_list[8]->parameter_list[1]->val_ptr = &um->RearTire_rem.K;
+ 
+    mbs_infos->user_models->user_model_list[9]->parameter_list[0]->val_ptr = &um->steerwheel.D;
+ 
+    mbs_infos->user_models->user_model_list[10]->parameter_list[0]->val_ptr = &um->pedals.ped1;
+    mbs_infos->user_models->user_model_list[10]->parameter_list[1]->val_ptr = &um->pedals.ped2;
+    mbs_infos->user_models->user_model_list[10]->parameter_list[2]->val_ptr = &um->pedals.mode;
+ 
+    mbs_infos->user_models->user_model_list[11]->parameter_list[0]->val_ptr = &um->PID.Kp;
+    mbs_infos->user_models->user_model_list[11]->parameter_list[1]->val_ptr = &um->PID.Kd;
+    mbs_infos->user_models->user_model_list[11]->parameter_list[2]->val_ptr = &um->PID.Ki;
+    mbs_infos->user_models->user_model_list[11]->parameter_list[3]->val_ptr = &um->PID.velocity;
+    mbs_infos->user_models->user_model_list[11]->parameter_list[4]->val_ptr = &um->PID.brake;
+    mbs_infos->user_models->user_model_list[11]->parameter_list[5]->val_ptr = &um->PID.sum_error;
+    mbs_infos->user_models->user_model_list[11]->parameter_list[6]->val_ptr = &um->PID.previous_error;
+ 
+    mbs_infos->user_models->user_model_list[12]->parameter_list[0]->val_ptr = um->thread.thread_struct;
+ 
+    mbs_infos->user_models->user_model_list[13]->parameter_list[0]->val_ptr = &um->expe.t_rand;
  
 }
  
@@ -187,11 +239,29 @@ void mbs_delete_user_model(UserModel* um)
     printf("user_model->RearTire_rem.R=%f\n", um->RearTire_rem.R);
     printf("user_model->RearTire_rem.K=%f\n", um->RearTire_rem.K);
  
+    printf("user_model->steerwheel.D=%f\n", um->steerwheel.D);
+ 
+    printf("user_model->pedals.ped1=%f\n", um->pedals.ped1);
+    printf("user_model->pedals.ped2=%f\n", um->pedals.ped2);
+    printf("user_model->pedals.mode=%f\n", um->pedals.mode);
+ 
+    printf("user_model->PID.Kp=%f\n", um->PID.Kp);
+    printf("user_model->PID.Kd=%f\n", um->PID.Kd);
+    printf("user_model->PID.Ki=%f\n", um->PID.Ki);
+    printf("user_model->PID.velocity=%f\n", um->PID.velocity);
+    printf("user_model->PID.brake=%f\n", um->PID.brake);
+    printf("user_model->PID.sum_error=%f\n", um->PID.sum_error);
+    printf("user_model->PID.previous_error=%f\n", um->PID.previous_error);
+ 
+    printf("user_model->thread.thread_struct : structure content will not be printed here \n");
+ 
+    printf("user_model->expe.t_rand=%f\n", um->expe.t_rand);
+ 
 }
  
 void mbs_get_user_model_size(int *n_user_model) 
 {
-    *n_user_model  = 9; 
+    *n_user_model  = 14; 
 }
  
 void mbs_get_user_model_list(int *user_model_list) 
@@ -205,6 +275,11 @@ void mbs_get_user_model_list(int *user_model_list)
     user_model_list[7]  = 6; 
     user_model_list[8]  = 2; 
     user_model_list[9]  = 2; 
+    user_model_list[10]  = 1; 
+    user_model_list[11]  = 3; 
+    user_model_list[12]  = 7; 
+    user_model_list[13]  = 1; 
+    user_model_list[14]  = 1; 
 }
 
 // ============================================================ //
